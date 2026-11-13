@@ -1,0 +1,16 @@
+[project]
+name = "space-mission-design"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "ZeroXray404", email = "dev.0x404@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+space-mission-design = "space_mission_design:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"

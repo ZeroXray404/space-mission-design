@@ -63,6 +63,28 @@ Before requesting review:
 
 During the hackathon, prefer small pull requests over large, long-lived branches.
 
+### Copyable PR description template
+
+Copy the Markdown below into your pull request description and fill in each section.
+
+```markdown
+## Summary
+
+Describe what this PR does and why.
+
+## Changes
+
+Describe the main changes.
+
+## Testing
+
+Describe how you tested the changes.
+
+## Notes
+
+Mention any known limitations or relevant issues.
+```
+
 ## Dependencies and local environment
 
 Use `uv add` to modify dependencies. Commit both `pyproject.toml` and `uv.lock`. Never commit `.venv/`, local secrets, or temporary files.

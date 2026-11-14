@@ -2,7 +2,7 @@
 Interface engine of game
 """
 
-# from . import player
+from . import player
 
 # Clear screen and 
 def clear_screen():
@@ -45,3 +45,8 @@ def startup():
 
         else:
             print("Invalid option. Please try again.")
+def startup() -> object:
+    print("Initializing mission simulator...")
+    player_name = input("What's your name? ")
+    player_one = player.Player(player_name)
+    return player_one

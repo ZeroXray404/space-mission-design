@@ -2,7 +2,8 @@
 Interface engine
 """
 
-# Clear screen and 
+
+# Clear screen and
 def clear_screen():
     print(chr(27) + "[2J" + chr(27) + "[;H", end="")
 
@@ -28,7 +29,6 @@ def about_cubesats():
     clear_screen()
     print("About CubeStats")
     input("\nPress ENTER to return...")
-
 
 
 def mission_handbook():

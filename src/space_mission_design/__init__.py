@@ -4,6 +4,7 @@ from . import game, interface
 Game main menu
 """
 
+
 def main() -> None:
     interface.startup()
     running = True

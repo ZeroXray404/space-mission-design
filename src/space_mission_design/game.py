@@ -4,6 +4,7 @@ from . import interface, player
 Game engine
 """
 
+
 def start_mission():
     interface.clear_screen()
     print("=== NEW MISSION ===")

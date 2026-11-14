@@ -70,7 +70,7 @@ Run lint, formatting, and tests before opening a pull request:
 ```bash
 uv run --locked ruff check .
 uv run --locked ruff format --check .
-uv run --locked pytest -q
+uv run --locked pytest -qs
 ```
 
 The current smoke test calls `main()` and checks that it completes without exceptions. Terminal messages can change freely during development.

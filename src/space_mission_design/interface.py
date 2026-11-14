@@ -25,8 +25,13 @@ def main_menu():
 
 
 def about_cubesats():
+    clear_screen()
     print("About CubeStats")
+    input("\nPress ENTER to return...")
+
 
 
 def mission_handbook():
+    clear_screen()
     print("Mission handbook")
+    input("\nPress ENTER to return...")

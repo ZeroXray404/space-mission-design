@@ -2,9 +2,9 @@
 Player classes
 """
 
+
 # Main player class
 class Player:
-
     def __init__(self, name):
         self.name = name
         # Variable to be updated upon players choice of role

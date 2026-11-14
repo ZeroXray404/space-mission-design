@@ -8,4 +8,5 @@ Interface engine of game
 # Startup of simulation
 def startup() -> None:
     print("Initializing mission simulator...")
+    player_name = input("What's your name? ")
     return 0

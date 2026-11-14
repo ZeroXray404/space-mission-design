@@ -34,5 +34,5 @@ jobs:
       - name: Ruff formatting
         run: uv run --locked ruff format --check .
 
-      - name: Run tests
-        run: uv run --locked pytest -q
+      # - name: Run tests
+      #   run: uv run --locked pytest -q

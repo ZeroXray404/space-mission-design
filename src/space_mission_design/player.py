@@ -5,11 +5,12 @@ Player classes
 
 # Main player class
 class Player:
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
         # Variable to be updated upon players choice of role
         self.role = None
 
     # Function to update players role
-    def set_role(self, role):
+    def set_role(self, role: str):
         self.role = role
+        print("Role updated to: " + self.role)

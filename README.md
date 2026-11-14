@@ -53,13 +53,7 @@ This creates a project-local virtual environment (`.venv/`) and installs the dep
 uv run space-mission-design
 ```
 
-**Current expected output:**
-
-```text
-Hello from space-mission-design!
-```
-
-The output will change as gameplay is implemented.
+The application currently runs a startup function and prints startup messages. The messages will evolve as gameplay is implemented.
 
 ### 5. Run Python directly (optional)
 
@@ -68,6 +62,20 @@ uv run python --version
 ```
 
 You do not need to manually activate `.venv`: `uv run` uses the project environment automatically.
+
+## Development checks
+
+Run lint, formatting, and tests before opening a pull request:
+
+```bash
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv run --locked pytest -q
+```
+
+The current smoke test calls `main()` and checks that it completes without exceptions. Terminal messages can change freely during development.
+
+GitHub Actions runs these checks on pull requests and pushes to `main`.
 
 ## Working with dependencies
 
@@ -90,17 +98,25 @@ Commit changes to `pyproject.toml` and `uv.lock` together. Never commit the `.ve
 
 ```text
 space-mission-design/
+├── .github/
+│   └── workflows/
+│       └── ci.yml         # Automated lint, formatting, and test checks
 ├── src/
 │   └── space_mission_design/
-│       └── __init__.py    # Current application entry point
+│       ├── __init__.py    # Application entry point (main)
+│       ├── interface.py   # Startup function for the terminal interface
+│       └── player.py      # Player class with a name and role
+├── tests/
+│   └── test_smoke.py      # Startup smoke test
 ├── .gitignore
 ├── .python-version        # Python 3.12
+├── CONTRIBUTING.md        # Collaboration workflow and conventions
 ├── pyproject.toml          # Project metadata and dependencies
 ├── uv.lock                # Locked dependencies
 └── README.md
 ```
 
-The structure will evolve as game logic, terminal interactions, and tests are added.
+The structure will evolve as gameplay and additional tests are added.
 
 ## Collaboration
 

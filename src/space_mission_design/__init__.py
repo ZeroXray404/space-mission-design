@@ -1,4 +1,4 @@
-from . import interface
+from . import interface, player
 
 def main() -> None:
     print("Hello from space-mission-design!")

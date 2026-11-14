@@ -13,3 +13,4 @@ class Player:
     # Function to update players role
     def set_role(self, role: str):
         self.role = role
+        print("Role updated to: " + self.role)

@@ -1,12 +1,16 @@
 """
-Interface engine of game
+Interface engine
 """
-
-from . import player
 
 # Clear screen and 
 def clear_screen():
     print(chr(27) + "[2J" + chr(27) + "[;H", end="")
+
+
+# Startup of simulation
+def startup():
+    print("Initializing mission simulator...")
+    input("Press ENTER to continue...")
 
 
 # Main menu
@@ -17,36 +21,12 @@ def main_menu():
     print("3. Mission handbook")
     print("4. Exit")
 
-    return input("Select an option: ")
+    return input("\nSelect an option: ")
 
 
-# Startup of simulation
-def startup():
-    print("Initializing mission simulator...")
+def about_cubesats():
+    print("About CubeStats")
 
-    running = True
 
-    while running:
-        clear_screen()
-        choice = main_menu()
-
-        if choice == "1":
-            print("Starting new mission...")
-
-        elif choice == "2":
-            print("About CubeSats...")
-
-        elif choice == "3":
-            print("Opening mission handbook...")
-
-        elif choice == "4":
-            print("Exiting mission simulator...")
-            running = False
-
-        else:
-            print("Invalid option. Please try again.")
-def startup() -> object:
-    print("Initializing mission simulator...")
-    player_name = input("What's your name? ")
-    player_one = player.Player(player_name)
-    return player_one
+def mission_handbook():
+    print("Mission handbook")

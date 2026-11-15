@@ -22,7 +22,7 @@ def main() -> None:
         elif choice == "3":
             interface.mission_handbook()
 
-        elif choice == "4":
+        elif choice == "q":
             print("\nExiting mission simulator...\n")
             running = False
 

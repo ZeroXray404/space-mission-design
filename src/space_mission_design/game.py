@@ -5,9 +5,10 @@ Game engine
 """
 
 
+# Mission
 def start_mission():
     interface.clear_screen()
-    print("=== NEW MISSION ===")
+    print("=== NEW MISSION ===\n")
 
     player_name = input("What's your name? ")
     player_one = player.Player(player_name)
@@ -30,14 +31,15 @@ def start_mission():
         input("Press ENTER to return to main menu...")
 
 
+# Handle player role input & updates Player
 def select_role(player_one):
     while True:
         interface.clear_screen()
 
-        print("=== SELECT ROLE ===")
+        print("=== SELECT ROLE ===\n")
         print("1. Mission Commander")
         print("2. Systems Engineer")
-        print("3. Flight Operator")
+        print("3. Flight Operator\n")
 
         choice = input("Select a role: ")
 
@@ -58,13 +60,73 @@ def select_role(player_one):
             input("Press ENTER to continue...")
 
 
+# Handle player decision & updates OngoingMission
+def make_decision(ongoing_mission, current_phase):
+    interface.clear_screen()
+    print(f"=== {current_phase.title.upper()} ===\n")
+
+    for index, choice in enumerate(current_phase.choices, start=1):
+        print(f"{index}. {choice['name']}")
+
+    selected = input("\nSelect option: ")
+
+    # Handle invalid input
+    if not selected.isdigit():
+        print("\nInvalid input.")
+        input("\nPress ENTER to continue...")
+        return
+
+    index = int(selected) - 1
+
+    if index < 0 or index >= len(current_phase.choices):
+        print("\nInvalid input.")
+        input("\nPress ENTER to continue...")
+        return
+
+    # Check budget
+    choice = current_phase.choices[index]
+    new_budget = ongoing_mission.budget + choice["budget"]
+
+    if new_budget < 0:
+        print("Insufficient budget.")
+        input("Press ENTER to continue...")
+        return
+
+    # Save decision
+    ongoing_mission.budget = new_budget
+    ongoing_mission.decisions.append(
+        {
+            "phase": current_phase.title,
+            "choice": choice["name"],
+        }
+    )
+    print(f"\nSelected: {choice["name"]}")
+    print(f"Budget remaining: {ongoing_mission.budget} credits")
+    input("\nPress ENTER to continue...")
+
+
+def check_decision(ongoing_mission, current_phase):
+    interface.clear_screen()
+    print(f"=== {current_phase.title.upper()} ===\n")
+    print("Your CubeSat is equipped with: ")
+    for index, decision in enumerate(ongoing_mission.decisions, start=1):
+        if decision == "":
+            print("No equipment mounted")
+        else:
+            print(f"{index}. {decision["choice"]}")
+
+    input("\nPress ENTER to continue...")
+
+
+
+# Handle in-game phase menu
 def play_phase(ongoing_mission, current_phase):
     running = True
 
     while running:
         interface.clear_screen()
         print(f"=== {current_phase.title.upper()} ===")
-        print(f"\nBudget: {ongoing_mission.budget}")
+        print(f"\nBudget: {ongoing_mission.budget} credits")
         print(f"Battery: {ongoing_mission.battery}%")
 
         print("\n1. Read mission briefing")
@@ -80,12 +142,10 @@ def play_phase(ongoing_mission, current_phase):
             input("\nPress ENTER to continue...")
 
         elif choice == "2":
-            print("Choose an alternative")
-            input("\nPress ENTER to continue...")
+            make_decision(ongoing_mission, current_phase)
 
         elif choice == "3":
-            print("Current decision")
-            input("\nPress ENTER to continue...")
+            check_decision(ongoing_mission, current_phase)
 
         elif choice == "4":
             print("Next phase")

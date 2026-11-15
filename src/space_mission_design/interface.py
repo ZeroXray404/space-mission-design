@@ -3,20 +3,21 @@ Interface engine
 """
 
 
-# Clear screen and
+# Clear screen
 def clear_screen():
     print(chr(27) + "[2J" + chr(27) + "[;H", end="")
 
 
 # Startup of simulation
 def startup():
+    clear_screen()
     print("Initializing mission simulator...")
     input("Press ENTER to continue...")
 
 
 # Main menu
 def main_menu():
-    print("\n=== CUBESAT 101 ===")
+    print("=== CUBESAT 101 ===\n")
     print("1. Start new mission")
     print("2. About CubeSats")
     print("3. Mission handbook")

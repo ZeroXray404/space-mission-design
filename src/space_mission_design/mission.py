@@ -27,7 +27,7 @@ def budget_overrun(
 ) -> float:
     likelihood_draw = random.random()  # Draws a float between 0 and 1
     if overrun_likelihood >= likelihood_draw:  # Project has run over budget
-        overrun_draw = random.uniform(0, overrun_factor)
+        overrun_draw = random.uniform(0, overrun_factor) - 1
         actual_budget = round((list_cost + overrun_draw), 2)
     else:
         actual_budget = list_cost

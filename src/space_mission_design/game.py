@@ -1,4 +1,4 @@
-from . import interface, mission, player
+from . import interface, mission, player  # , score
 
 """
 Game engine
@@ -20,6 +20,7 @@ def start_mission():
     input("\nPress ENTER to continue...")
 
     ongoing_mission = mission.OngoingMission()
+    # mission_score = score.Score()
     phases = [mission.design_phase, mission.model_phase]
 
     while ongoing_mission.phase < len(phases):

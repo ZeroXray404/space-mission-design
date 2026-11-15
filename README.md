@@ -42,7 +42,7 @@ cd space-mission-design
 ### 3. Install Python and project dependencies
 
 ```bash
-uv sync --locked
+uv sync
 ```
 
 This creates a project-local virtual environment (`.venv/`) and installs the dependencies recorded in `uv.lock`. The virtual environment is not committed to Git.
@@ -68,10 +68,12 @@ You do not need to manually activate `.venv`: `uv run` uses the project environm
 Run lint, formatting, and tests before opening a pull request:
 
 ```bash
-uv run --locked ruff check .
-uv run --locked ruff format --check .
-uv run --locked pytest -qs
+uv run ruff check
+uv run ruff format --check
+uv run pytest -qs
 ```
+
+if ruff finds errors, fix with `uv run ruff format`
 
 The current smoke test calls `main()` and checks that it completes without exceptions. Terminal messages can change freely during development.
 
@@ -89,7 +91,7 @@ After pulling changes from GitHub, synchronize your environment:
 
 ```bash
 git pull
-uv sync --locked
+uv sync
 ```
 
 Commit changes to `pyproject.toml` and `uv.lock` together. Never commit the `.venv/` directory.
@@ -99,21 +101,26 @@ Commit changes to `pyproject.toml` and `uv.lock` together. Never commit the `.ve
 ```text
 space-mission-design/
 ├── .github/
-│   └── workflows/
-│       └── ci.yml         # Automated lint, formatting, and test checks
+│   ├── workflows/
+│   │   └── ci.yml            # Automated lint, formatting, and test checks
+│   └── pull_request_template.md # Pull request template
 ├── src/
 │   └── space_mission_design/
-│       ├── __init__.py    # Application entry point (main)
-│       ├── interface.py   # Startup function for the terminal interface
-│       └── player.py      # Player class with a name and role
+│       ├── __init__.py        # Application entry point and main menu loop
+│       ├── assessment.py      # Mission status and debriefing placeholders
+│       ├── game.py            # Mission startup and player role selection
+│       ├── interface.py       # Terminal menus and screen helpers
+│       ├── mission.py         # Mission class and file-loading placeholders
+│       ├── player.py          # Player class with a name and role
+│       └── score.py           # Score-tracking placeholders
 ├── tests/
-│   └── test_smoke.py      # Startup smoke test
+│   └── test_smoke.py          # Startup smoke test
 ├── .gitignore
-├── .python-version        # Python 3.12
-├── CONTRIBUTING.md        # Collaboration workflow and conventions
-├── pyproject.toml          # Project metadata and dependencies
-├── uv.lock                # Locked dependencies
-└── README.md
+├── .python-version           # Python 3.12
+├── CONTRIBUTING.md           # Collaboration workflow and conventions
+├── pyproject.toml            # Project metadata and dependencies
+├── README.md
+└── uv.lock                   # Locked dependencies
 ```
 
 The structure will evolve as gameplay and additional tests are added.

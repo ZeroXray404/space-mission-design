@@ -4,7 +4,7 @@ This project is built by a small team during the NASA Space Apps Challenge. Keep
 
 ## Git workflow
 
-1. Update your local `main`: `git switch main && git pull --ff-only`.
+1. Update your local `main`: `git switch main && git pull`.
 2. Create a short-lived branch, e.g. `git switch -c feat/mission-selection`.
 3. Implement and test one focused change.
 4. Commit using the convention below.
@@ -58,7 +58,7 @@ Before requesting review:
 - Explain **what** changed and **why**.
 - Document **how it was tested**.
 - Note any known limitations and related issues.
-- Ensure `uv sync --locked` and `uv run space-mission-design` work.
+- Ensure `uv sync` and `uv run space-mission-design` work.
 - Keep unrelated changes out of the PR.
 
 During the hackathon, prefer small pull requests over large, long-lived branches.

@@ -24,11 +24,24 @@ def start_mission():
 
     while ongoing_mission.phase < len(phases):
         current_phase = phases[ongoing_mission.phase]
+        completed = play_phase(ongoing_mission, current_phase)
 
-        play_phase(ongoing_mission, current_phase)
+        if not completed:
+            print("\nMission aborted!")
+            input("Press ENTER to return to main menu...")
+            return
+
         ongoing_mission.phase += 1
 
-        input("Press ENTER to return to main menu...")
+        # Check current phase status
+        if ongoing_mission.phase < len(phases):
+            print("\nPhase completed!")
+            input("press ENTER to continue to next phase")
+
+    print(
+        f"\nCongratulations {player_one.role} {player_one.name}! The mission was a success!"
+    )
+    input("Press ENTER to return to main menu...")
 
 
 # Handle player role input & updates Player
@@ -118,6 +131,13 @@ def check_decision(ongoing_mission, current_phase):
     input("\nPress ENTER to continue...")
 
 
+def phase_completed(ongoing_mission, current_phase):
+    for decision in ongoing_mission.decisions:
+        if decision["phase"] == current_phase.title:
+            return True
+    return False
+
+
 # Handle in-game phase menu
 def play_phase(ongoing_mission, current_phase):
     running = True
@@ -141,18 +161,25 @@ def play_phase(ongoing_mission, current_phase):
             input("\nPress ENTER to continue...")
 
         elif choice == "2":
-            make_decision(ongoing_mission, current_phase)
+            if phase_completed(ongoing_mission, current_phase):
+                print("\nYou have already made a decision in this phase.")
+                input("Press ENTER to continue...")
+            else:
+                make_decision(ongoing_mission, current_phase)
 
         elif choice == "3":
             check_decision(ongoing_mission, current_phase)
 
         elif choice == "4":
-            print("Next phase")
-            input("\nPress ENTER to continue...")
+            if phase_completed(ongoing_mission, current_phase):
+                return True
+            print("\nYou must make a decision before continuing\n")
+            input("Press ENTER to continue...")
 
         elif choice == "q":
-            print("\nLeaving mission...\n")
+            print("\nLeaving mission...")
             running = False
+            return False
 
         else:
             print("\nInvalid option.")

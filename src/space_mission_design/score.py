@@ -5,7 +5,7 @@ Classes and functions for keeping score
 
 class Score:
     def __init__(self):
-        pass
+        self.score = None
 
     def update_score(self):
         pass

@@ -20,7 +20,7 @@ def main_menu():
     print("1. Start new mission")
     print("2. About CubeSats")
     print("3. Mission handbook")
-    print("4. Exit")
+    print("q. Quit")
 
     return input("\nSelect an option: ")
 

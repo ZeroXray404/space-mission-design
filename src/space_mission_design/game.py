@@ -19,7 +19,7 @@ def start_mission():
     input("\nPress ENTER to continue...")
 
     ongoing_mission = mission.OngoingMission()
-    phases = [mission.design_phase]
+    phases = [mission.design_phase, mission.model_phase]
 
     while ongoing_mission.phase < len(phases):
         current_phase = phases[ongoing_mission.phase]

@@ -28,13 +28,28 @@ design_phase = MissionPhase(
             "name": "Basic solar panels",
             "budget": -10,
             "power": 10,
+            "weigth": 7
         },
         {
             "name": "Advanced solar panels",
             "budget": -30,
             "power": 25,
+            "weigth": 5
         },
     ],
+)
+
+test_phase = MissionPhase(
+    "Select Launch Vehicle",
+    "Which Launch Vehicle should be used?",
+    [
+        {
+            "name": ,
+            "budget": ,
+            "fuel consumption": ,
+            "weigth": 
+        }
+    ]
 )
 
 

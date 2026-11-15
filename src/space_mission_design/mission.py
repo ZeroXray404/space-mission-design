@@ -35,23 +35,54 @@ def budget_overrun(
 
 
 # Mocked data. Later: read from JSON or yml
+# Power is in watts, weight in kilograms, and reliability is a probability.
 design_phase = MissionPhase(
     "Satellite Design",
     "Choose your CubeSat power system.",
     [
-        {"name": "Basic solar panels", "budget": -10, "power": 10, "weight": 7},
-        {"name": "Advanced solar panels", "budget": -30, "power": 25, "weight": 5},
+        {
+            "name": "Basic solar panels",
+            "description": (
+                "Body-mounted solar panels. "
+                "Simple construction with no deployment mechanism. "
+                "Limited power generation."
+            ),
+            "budget": 10,
+            "power": 10,
+            "weight": 0.7,
+            "reliability": 0.98,
+        },
+        {
+            "name": "Advanced solar panels",
+            "description": (
+                "Deployable solar arrays with increased "
+                "power generation. Requires a deployment "
+                "mechanism that introduces additional risk."
+            ),
+            "budget": 30,
+            "power": 25,
+            "weight": 0.5,
+            "reliability": 0.93,
+        },
     ],
 )
 
+# Descriptions: NASA CubeSat 101, October 2017, sections 3.1, 3.4 and 3.5.
+# Vehicle names and numeric values are fictional game data.
 model_phase = MissionPhase(
     "Select Launch Vehicle",
     "Which Launch Vehicle should be used?",
     [
         {
             "name": "Astra V",
+            "description": (
+                "Fly as a secondary payload on a NASA-procured launch when "
+                "the primary mission allows it. Your team submits documents "
+                "through the mission integrator for NASA LSP approval and "
+                "presents a readiness review."
+            ),
             "mission model": "NASA-Procured",
-            "budget": -30,
+            "budget": 30,
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 6,
@@ -60,8 +91,14 @@ model_phase = MissionPhase(
         },
         {
             "name": "Stella X",
+            "description": (
+                "Share a NASA-procured launch as a secondary payload. "
+                "The mission integrator coordinates documentation, interface "
+                "verification and dispenser integration. Your team provides "
+                "regular status updates and presents a readiness review."
+            ),
             "mission model": "NASA-Procured",
-            "budget": -25,
+            "budget": 25,
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 8,
@@ -70,8 +107,14 @@ model_phase = MissionPhase(
         },
         {
             "name": "Aurora II",
+            "description": (
+                "Purchase a launch opportunity through a third-party broker. "
+                "Launch requirements come from the launch vehicle provider "
+                "through the broker, which acts as or appoints the mission "
+                "integrator."
+            ),
             "mission model": "Third-party brooker",
-            "budget": -50,
+            "budget": 50,
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 5,
@@ -80,8 +123,14 @@ model_phase = MissionPhase(
         },
         {
             "name": "Luna B Series III",
+            "description": (
+                "Arrange a commercial launch through a third-party broker. "
+                "The assigned mission integrator works with your team and "
+                "the launch vehicle provider to define the dispenser interface "
+                "and schedule document and hardware deliveries."
+            ),
             "mission model": "Third-party brooker",
-            "budget": -22.6,
+            "budget": 22.6,
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 11.5,
@@ -90,8 +139,14 @@ model_phase = MissionPhase(
         },
         {
             "name": "Atlas 38",
+            "description": (
+                "Travel to the ISS inside a pressurized cargo vessel, then "
+                "deploy from the station. Your CubeSat is installed in its "
+                "dispenser on the ground and must meet ISS-specific interface "
+                "and flight safety requirements."
+            ),
             "mission model": "ISS-mission",
-            "budget": -30,
+            "budget": 30,
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 8,

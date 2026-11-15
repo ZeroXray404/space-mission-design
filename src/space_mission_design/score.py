@@ -2,7 +2,8 @@
 Classes and functions for keeping score
 """
 
-class Score(self):
+
+class Score:
     def __init__(self):
         pass
 

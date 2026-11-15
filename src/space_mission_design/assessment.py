@@ -2,7 +2,8 @@
 Classes and functions for assessment and debriefing
 """
 
-class Status(self):
+
+class Status:
     def __init__(self):
         pass
 

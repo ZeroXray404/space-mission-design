@@ -8,9 +8,11 @@
 
 ## Validation
 
-- [ ] `uv sync --locked`
+- [ ] `uv run ruff check`
+- [ ] `uv run ruff format --check` if error occurs `uv run ruff format`
 - [ ] `uv run space-mission-design`
 - [ ] Relevant manual checks or tests completed
+
 
 ## Related issue
 

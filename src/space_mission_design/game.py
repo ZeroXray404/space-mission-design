@@ -38,9 +38,10 @@ def start_mission():
             print("\nPhase completed!")
             input("press ENTER to continue to next phase")
 
-    print(f"\nCongratulations {player_one.role} {player_one.name}! The mission was a success!")
+    print(
+        f"\nCongratulations {player_one.role} {player_one.name}! The mission was a success!"
+    )
     input("Press ENTER to return to main menu...")
-    
 
 
 # Handle player role input & updates Player
@@ -174,7 +175,6 @@ def play_phase(ongoing_mission, current_phase):
                 return True
             print("\nYou must make a decision before continuing\n")
             input("Press ENTER to continue...")
-                
 
         elif choice == "q":
             print("\nLeaving mission...")

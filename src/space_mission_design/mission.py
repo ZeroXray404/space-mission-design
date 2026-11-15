@@ -1,7 +1,7 @@
 """
-Mission classes
+Mission classes and functions
 """
-
+import random
 
 class OngoingMission:
     def __init__(self):
@@ -18,6 +18,17 @@ class MissionPhase:
         self.description = description
         self.choices = choices
 
+# Function for calculating budget overruns
+def budget_overrun(list_cost: float, 
+                   overrun_factor: float, 
+                   overrun_likelihood: float) -> float:
+    likelihood_draw = random.random() # Draws a float between 0 and 1
+    if overrun_likelihood >= likelihood_draw: # Project has run over budget
+        overrun_draw = random.uniform(0, overrun_factor)
+        actual_budget = round((list_cost + overrun_draw), 2)
+    else:
+        actual_budget = list_cost
+    return actual_budget
 
 # Mocked data. Later: read from JSON or yml
 design_phase = MissionPhase(

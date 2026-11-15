@@ -77,12 +77,9 @@ def select_role(player_one):
 # Handle player decision & updates OngoingMission
 def make_decision(ongoing_mission, current_phase):
     interface.clear_screen()
-    print(f"=== {current_phase.title.upper()} ===\n")
+    interface.display_choices(current_phase)
 
-    for index, choice in enumerate(current_phase.choices, start=1):
-        print(f"{index}. {choice['name']}")
-
-    selected = input("\nSelect option: ")
+    selected = input("Select option: ")
 
     # Handle invalid input
     if not selected.isdigit():
@@ -99,7 +96,7 @@ def make_decision(ongoing_mission, current_phase):
 
     # Check budget
     choice = current_phase.choices[index]
-    new_budget = ongoing_mission.budget + choice["budget"]
+    new_budget = ongoing_mission.budget - choice["budget"]
 
     if new_budget < 0:
         print("Insufficient budget.")
@@ -158,7 +155,8 @@ def play_phase(ongoing_mission, current_phase):
         choice = input("\nSelect an option: ")
 
         if choice == "1":
-            print(f"\n{current_phase.description}")
+            print()
+            interface.display_description(current_phase.description)
             input("\nPress ENTER to continue...")
 
         elif choice == "2":

@@ -100,7 +100,7 @@ def make_decision(ongoing_mission, current_phase):
             "choice": choice["name"],
         }
     )
-    print(f"\nSelected: {choice["name"]}")
+    print(f"\nSelected: {choice['name']}")
     print(f"Budget remaining: {ongoing_mission.budget} credits")
     input("\nPress ENTER to continue...")
 
@@ -113,10 +113,9 @@ def check_decision(ongoing_mission, current_phase):
         if decision == "":
             print("No equipment mounted")
         else:
-            print(f"{index}. {decision["choice"]}")
+            print(f"{index}. {decision['choice']}")
 
     input("\nPress ENTER to continue...")
-
 
 
 # Handle in-game phase menu

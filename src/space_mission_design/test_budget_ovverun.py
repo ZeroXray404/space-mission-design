@@ -1,4 +1,6 @@
 import random
+
+
 # Function for calculating budget overruns
 def budget_overrun(
     list_cost: float, overrun_factor: float, overrun_likelihood: float
@@ -13,6 +15,7 @@ def budget_overrun(
         actual_budget = list_cost
     return actual_budget
 
+
 a = budget_overrun(2, 0.8, 1)
 print(f">>a: {a}")
 
@@ -24,4 +27,3 @@ print(f">>c: {c}")
 
 d = budget_overrun(5, 10, 1)
 print(f">>d: {d}")
- 

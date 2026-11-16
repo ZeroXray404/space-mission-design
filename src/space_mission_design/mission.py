@@ -27,8 +27,8 @@ def budget_overrun(
 ) -> float:
     likelihood_draw = random.random()  # Draws a float between 0 and 1
     if overrun_likelihood >= likelihood_draw:  # Project has run over budget
-        overrun_draw = random.uniform(0, overrun_factor)
-        actual_budget = round((list_cost + overrun_draw), 2)
+        overrun_draw = 1 + random.uniform(0, overrun_factor)
+        actual_budget = round((list_cost * overrun_draw), 2)
     else:
         actual_budget = list_cost
     return actual_budget
@@ -86,7 +86,7 @@ model_phase = MissionPhase(
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 6,
-            "max overrun": 1.1,
+            "max overrun": 0.1,
             "overrun likelihood": 0.6,
         },
         {
@@ -102,7 +102,7 @@ model_phase = MissionPhase(
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 8,
-            "max overrun": 1.32,
+            "max overrun": 0.32,
             "overrun likelihood": 0.5,
         },
         {
@@ -118,7 +118,7 @@ model_phase = MissionPhase(
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 5,
-            "max overrun": 1.15,
+            "max overrun": 0.15,
             "overrun likelihood": 0.1,
         },
         {
@@ -134,7 +134,7 @@ model_phase = MissionPhase(
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 11.5,
-            "max overrun": 1.7,
+            "max overrun": 0.7,
             "overrun likelihood": 0.8,
         },
         {
@@ -150,7 +150,7 @@ model_phase = MissionPhase(
             # "fuel consumption": ,
             # "weight": ,
             "loading time": 8,
-            "max overrun": 1.05,
+            "max overrun": 0.05,
             "overrun likelihood": 0.65,
         },
     ],
